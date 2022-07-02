@@ -2,11 +2,11 @@ const { gql } = require("apollo-server")
 
 const typeDefs = gql`
 type User{
-    id: ID!
+    id: ID
     name: String!
     username: String!
     age: Int!
-    nationality: Nationality!
+    nationality: Nationality
     friends: [User]
     favoriteMovies: [Movie]
 }
@@ -19,11 +19,11 @@ BRASIL
 }
 
 type Movie{
-    id: ID!
+    id: ID
     name: String!
     rate: Int
     releseadYear: Int!
-    isInTheaters: Boolean!
+    isInTheaters: String
 }
 
 type Query{
@@ -45,10 +45,19 @@ input updateUsernameInput {
     newUsername: String!
 }
 
+input createMovieInput{
+    id: ID
+    name: String!
+    rate: Int!
+    releseadYear: Int!
+    isInTheaters: String
+}
+
 type Mutation {
     createUser(input: createUserInput!): User
     updateUsername(input: updateUsernameInput!): User
     deleteUser(id: ID!): User
+    createMovie(input: createMovieInput!): Movie
 }
 
 `

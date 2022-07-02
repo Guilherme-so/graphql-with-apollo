@@ -52,6 +52,14 @@ const resolvers = {
             const formatedId = Number(id)
             _.remove(userList, (user) => user.id === formatedId)
             return null
+        },
+        //movie stuff  
+        createMovie: (parent, args) => {
+            const movie = args.input
+            const movieId = movieList[movieList.length - 1].id
+            movie.id = movieId + 1
+            movieList.push(movie)
+            return movie
         }
     }
 }
